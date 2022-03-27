@@ -41,6 +41,11 @@
             "action_type": "f",
             "action": ["открой браузер"],
             "answer": "open_browser"
+        },
+        {
+            "action_type": "f",
+            "action": ["скажи привет"],
+            "answer": "say_hello"
         }
     ]
 }

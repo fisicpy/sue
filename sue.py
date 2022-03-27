@@ -43,13 +43,15 @@ class Sue:
                 if user_action.lower() in block["action"]:
                     return random.choice(block["answer"])
             elif block["action_type"] == "f":
-                message = f"starting function \"{block['answer']}\"...\n"
-                try:
-                    result = functions.functions[block["answer"]](block["action"])
-                    return message + result + "\nfunction \"{block['answer']}\" finished successful"
-                except Exception as exc:
-                    message += f"function \"{block['answer']}\" failed with error:\n{exc}"
-                    return message
+                if user_action.lower() in block["action"]:
+                    print(f"starting function \"{block['answer']}\"...")
+                    try:
+                        result = functions.functions[block["answer"]](user_action.lower())
+                        print(f"function \"{block['answer']}\" finished successful")
+                        return result
+                    except Exception as exc:
+                        print(f"function \"{block['answer']}\" failed with error:\n{exc}")
+                        return f"function \"{block['answer']}\" failed with error:\n{exc}"
 
 
 if __name__ == "__main__":
