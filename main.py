@@ -2,7 +2,7 @@ import sue  # import module
 
 sue = sue.Sue()  # create object
 
-sue.upload_new_language_package("suelp1.0a.json")  # upload standard language pack
+sue.upload_new_language_package("suelp1.2a.json")  # upload standard language pack
 
 run = True  # program operation flag
 while run:  # main program loop
