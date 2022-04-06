@@ -39,13 +39,18 @@
         },
         {
             "action_type": "f",
-            "action": ["открой браузер"],
-            "answer": "open_browser"
+            "action": ["сколько времени", "время", "сколько время"],
+            "answer": "time_function_name"
         },
         {
             "action_type": "f",
             "action": ["скажи привет"],
             "answer": "say_hello"
+        },
+        {
+            "action_type": "w",
+            "action": ["может быть в gym", "в gym"],
+            "answer": ["а давай", "полностью поддерживаю", ""]
         }
     ]
 }

@@ -26,7 +26,7 @@ class Sue:
                 print("Load data from file")
                 try:
                     self.language_package.extend(data["root"])
-                    print("Upload language package was successful")
+                    print(f"Uploading language package \"{language_package_name}\" was successful")
                 except KeyError:
                     print("Error: Incorrect spelling of the language package")
         except FileNotFoundError:
@@ -39,10 +39,10 @@ class Sue:
         for punctuation_mark in punctuation_marks:
             user_action = user_action.replace(punctuation_mark, "")  # delete all punctuation marks from user message
         for block in self.language_package:
-            if block["action_type"] == "w":  # check type of an action
+            if block["action_type"] == "w":  # check type of an action, w - words
                 if user_action.lower() in block["action"]:
                     return random.choice(block["answer"])
-            elif block["action_type"] == "f":
+            elif block["action_type"] == "f":  # f - function
                 if user_action.lower() in block["action"]:
                     print(f"starting function \"{block['answer']}\"...")
                     try:
@@ -52,8 +52,9 @@ class Sue:
                     except Exception as exc:
                         print(f"function \"{block['answer']}\" failed with error:\n{exc}")
                         return f"function \"{block['answer']}\" failed with error:\n{exc}"
+        return "извините, не поняла вас"
 
 
 if __name__ == "__main__":
     sue = Sue()
-    sue.upload_new_language_package("suelp1.0a.json")
+    print(sue.is_string_in_list("что такое процедурная генерация?", ["что такое", "кто такая", "кто такой"]))
