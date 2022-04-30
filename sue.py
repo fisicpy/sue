@@ -2,8 +2,10 @@
 import json
 import random
 import functions.main as functions
+from colorama import init, Fore
+init()
 
-
+# symbols we will replace from user's requires
 punctuation_marks = [
     ",", ".", "?", ":", ";", ")", "(", "-", "&", "$", "#", "№", "!", "`", "~",
     "%", "*", "@"
@@ -20,17 +22,18 @@ class Sue:
         language packages so that Sue understands more phrases.
         """
         try:
-            with open(language_package_name, "r", encoding="utf-8") as file:
-                print("Open file")
+            with open(language_package_name, "r", encoding="utf-8") as file:  # open file for reading
+                # we use utf-8 so Sue can understand cyrillic
+                print(Fore.YELLOW + "Open file")
                 data = json.load(file)
-                print("Load data from file")
+                print(Fore.YELLOW + "Load data from file")
                 try:
                     self.language_package.extend(data["root"])
-                    print(f"Uploading language package \"{language_package_name}\" was successful")
+                    print(Fore.YELLOW + f"Uploading language package \"{language_package_name}\" was successful")
                 except KeyError:
-                    print("Error: Incorrect spelling of the language package")
+                    print(Fore.YELLOW + "Error: Incorrect spelling of the language package")
         except FileNotFoundError:
-            print(f"Error: language package \"{language_package_name}\" not found")
+            print(Fore.YELLOW + f"Error: language package \"{language_package_name}\" not found")
 
     def process_user_action(self, user_action):
         """
@@ -44,17 +47,16 @@ class Sue:
                     return random.choice(block["answer"])
             elif block["action_type"] == "f":  # f - function
                 if user_action.lower() in block["action"]:
-                    print(f"starting function \"{block['answer']}\"...")
+                    print(Fore.YELLOW + f"starting function \"{block['answer']}\"...")
                     try:
                         result = functions.functions[block["answer"]](user_action.lower())
-                        print(f"function \"{block['answer']}\" finished successful")
+                        print(Fore.YELLOW + f"function \"{block['answer']}\" finished successful")
                         return result
                     except Exception as exc:
-                        print(f"function \"{block['answer']}\" failed with error:\n{exc}")
+                        print(Fore.YELLOW + f"function \"{block['answer']}\" failed with error:\n{exc}")
                         return f"function \"{block['answer']}\" failed with error:\n{exc}"
         return "извините, не поняла вас"
 
 
 if __name__ == "__main__":
     sue = Sue()
-    print(sue.is_string_in_list("что такое процедурная генерация?", ["что такое", "кто такая", "кто такой"]))

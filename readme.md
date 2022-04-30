@@ -1,16 +1,17 @@
 # Sue
 
 ## Why is it needed?
-Sue - imitation of human communication using the simplest algorithm.
-In the plan of using neural networks. Sue is can talk with you,
+Sue is a imitation of human communication using the simplest algorithm.
+In the plan of using neural networks. Sue can talk with you,
 control your computer, wish you sweet dreams.
 The alpha version supports only Russian, but this can be fixed
 by writing your own language package, more on that later.
 
 ## How to install it
-You need download file from this GitHub repository and install python 3x.
-Then start `main.py`. Alpha version work in terminal. Release version
-will use headset to communicate with user.
+Download the latest version installer from
+[this page](https://github.com/fisicpy/sue/releases).
+Then run the exe file.
+The installer will start and that's all you have to do.
 
 ## Methods of the class
 
@@ -40,18 +41,18 @@ with objects with user actions and responses to them:
             "answer": ["приветствую", "привет", "здравствуй"]
         },
         {
-            "action_type": "w",
+            "action_type": "w
+            "action_type": "f",
+            "action": ["сколько времени", "время", "сколько время"],
+            "answer": "time_function_name"
+        },
+    ]
+}
+```",
             "action": ["пока", "прощай", "до свидания", "прощайте", "скоро увидимся", "до завтра"],
             "answer": ["пока", "прощайте", "до свидания", "прощайте, мой госпадин", "скоро увидимся", "до завтра"]
         },
         {
-            "action_type": "f",
-            "action": ["сколько времени", "время", "сколько время"],
-            "answer": "time"
-        },
-    ]
-}
-```
 You can name your own language pack whatever you want,
 but the file extension must be `.json`, for example `my_sue_lp.json`. 
 To add your own language package you need to use command `npl`.
