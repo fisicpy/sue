@@ -5,9 +5,12 @@ init()
 
 print(Fore.YELLOW + "starting Sue...")
 sue = sue.Sue()  # create object
-print("Sue started successful")
+print("Sue started successful\n")
 
-sue.upload_new_language_package("suelp.json")  # upload standard language pack
+with open("lps.txt", "r") as file:
+    lines = file.readlines()
+    for line in lines:
+        sue.upload_new_language_package(line.strip())
 
 print(Fore.CYAN + "\nПривет! Меня зовут Сью. Можете мне что-нибудь написать, поболтаем."
                   "\nПросто скажите \"привет\", чтобы начать")

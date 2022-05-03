@@ -22,18 +22,18 @@ class Sue:
         language packages so that Sue understands more phrases.
         """
         try:
-            with open(language_package_name, "r", encoding="utf-8") as file:  # open file for reading
+            with open(language_package_name, encoding="utf-8-sig") as file:  # open file for reading
                 # we use utf-8 so Sue can understand cyrillic
                 print(Fore.YELLOW + "Open file")
                 data = json.load(file)
                 print(Fore.YELLOW + "Load data from file")
                 try:
                     self.language_package.extend(data["root"])
-                    print(Fore.YELLOW + f"Uploading language package \"{language_package_name}\" was successful")
+                    print(Fore.YELLOW + f"Uploading language package \"{language_package_name}\" was successful\n")
                 except KeyError:
-                    print(Fore.YELLOW + "Error: Incorrect spelling of the language package")
+                    print(Fore.YELLOW + "Error: Incorrect spelling of the language package\n")
         except FileNotFoundError:
-            print(Fore.YELLOW + f"Error: language package \"{language_package_name}\" not found")
+            print(Fore.YELLOW + f"Error: language package \"{language_package_name}\" not found\n")
 
     def process_user_action(self, user_action):
         """
